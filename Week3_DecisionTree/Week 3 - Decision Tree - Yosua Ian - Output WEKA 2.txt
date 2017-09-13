@@ -1,0 +1,67 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 1
+Relation:     Data-weka.filters.unsupervised.attribute.Remove-R1,9,11
+Instances:    398
+Attributes:   8
+              MPG_text
+              cylinders
+              displacement
+              horsepower
+              weight
+              acceleration
+              model_year
+              country_origin
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+displacement <= 200: good (240.0/13.0)
+displacement > 200
+|   model_year <= 74: bad (81.0)
+|   model_year > 74
+|   |   weight <= 3430
+|   |   |   horsepower <= 116
+|   |   |   |   horsepower <= 97
+|   |   |   |   |   cylinders <= 6
+|   |   |   |   |   |   weight <= 3121: good (2.0)
+|   |   |   |   |   |   weight > 3121: bad (7.0/1.0)
+|   |   |   |   |   cylinders > 6: good (1.0)
+|   |   |   |   horsepower > 97: good (13.0/1.0)
+|   |   |   horsepower > 116: bad (4.0)
+|   |   weight > 3430: bad (50.0/4.0)
+
+Number of Leaves  : 	8
+
+Size of the tree : 	15
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         367               92.2111 %
+Incorrectly Classified Instances        31                7.7889 %
+Kappa statistic                          0.8331
+Mean absolute error                      0.1116
+Root mean squared error                  0.2728
+Relative absolute error                 23.6866 %
+Root relative squared error             56.2179 %
+Total Number of Instances              398
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.874    0.049    0.917      0.874    0.895      0.834    0.890     0.877     bad
+                 0.951    0.126    0.925      0.951    0.938      0.834    0.890     0.866     good
+Weighted Avg.    0.922    0.097    0.922      0.922    0.922      0.834    0.890     0.870
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 132  19 |   a = bad
+  12 235 |   b = good
