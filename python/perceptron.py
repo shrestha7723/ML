@@ -1,9 +1,12 @@
 
 # Single perceptron
 # source from floydhub
-
+# using timer for testing
+from timeit import default_timer as timer
 from random import choice
 from numpy import array, dot, random
+
+start = timer()
 signum = lambda x: 0 if x < 0 else 1
 # Traning data as an array of tupple instead of array of array
 # for easier separation of input and target value
@@ -37,3 +40,6 @@ for i in range(num_iterations):
 for x, _ in training_data:
     result = dot(x, weights)
     print("{}: {} -> {}".format(x[:3], result, signum(result)))
+
+end = timer()
+print(end - start)
