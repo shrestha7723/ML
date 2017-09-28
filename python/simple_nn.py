@@ -1,7 +1,7 @@
 # source: http://iamtrask.github.io (modified)
 import numpy as np
 
-X_XOR = np.array([[0,0,1], [0,1,1], [1,0,1],[1,1,1]])
+X_XOR = np.array([[0,0,1], [0,1,1], [1,0,1], [1,1,1]])
 y_truth = np.array([[0,1,1,1]]).T
 np.random.seed(1)
 synapse_0 = 2*np.random.random((3,1)) - 1
