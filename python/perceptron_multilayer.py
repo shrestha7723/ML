@@ -13,8 +13,8 @@ def sigmoid(x):
 def derivate_output(output):
     return output*(1-output)
 # Create array with n numbers of normalized random weight
-def random_weight():
-    return 2*np.random.random((num_inputs,))-1
+def random_weight(size):
+    return 2*np.random.random((size,))-1
 
 iris = datasets.load_iris(True)
 data, target = iris
@@ -22,20 +22,19 @@ data, target = iris
 learning_rate = 0.2
 num_interates = 0
 
+# Let's try 3-1-1 for iris data
 num_inputs = 4
 num_layer = 3
 num_inodes = 3
 num_hnodes = 1
-num_onodes = 3
+num_onodes = 1
 
 np.random.seed(1)
 #Node in each layer as an array
 #Each node contains n amount of weights
-ilayer = [random_weight() for iter in range(num_inodes)]
-hlayer = [random_weight() for iter in range(num_hnodes)]
-olayer = [random_weight() for iter in range(num_onodes)]
-print(ilayer)
-print(hlayer)
+ilayer = [random_weight(num_inputs) for iter in range(num_inodes)]
+hlayer = [random_weight(num_inodes) for iter in range(num_hnodes)]
+olayer = [random_weight(num_hnodes) for iter in range(num_onodes)]
 print(olayer)
 
 for iter in range(num_interates):
