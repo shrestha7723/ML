@@ -1,4 +1,4 @@
-# Multilayer percetron v.0.3
+# Multilayer percetron v.0.2
 # Using iris data
 
 from sklearn import datasets
@@ -49,7 +49,7 @@ print(ilayer.shape)
 
 for iter in range(num_interates):
 
-    # Calculate the output of the network starting from input layer
+    # Calculate the output of the network
     output_ilayer = np.array([sigmoid(np.dot(data, ilayer[i]))
                               for i in range(num_inodes)]).transpose()
     # print("Output")
@@ -62,14 +62,13 @@ for iter in range(num_interates):
     # print(output_olayer.shape)
 
     # Calculate the delta weights of the output layer
-    err_olayer = np.array([target - output_olayer[i] for i in range(num_onodes)])
-    delta_w_output = np.array([learning_rate * err_olayer[i]
-                      * derivate_output(output_olayer[i]) * output_hlayer for i in range(num_onodes)])
+    err_olayer = [target - output_olayer[i] for i in range(num_onodes)]
+    delta_w_output = [learning_rate * err_olayer[i]
+                      * derivate_output(output_olayer[i]) * output_hlayer for i in range(num_onodes)]
     total_delta_w_output = np.sum(delta_w_output, axis=0)
 
     # Calculate the delta weights of the hidden layer
-    sum_downstream = np.array([derivate_output(output_olayer) * olayer[i] for i in range(num_onodes)])
-    print(sum_downstream.shape)
+    sum_downstream = derivate_output(output_olayer) * olayer
     delta_hidden = derivate_output(output_hlayer) * sum_downstream
     delta_w_hidden = learning_rate * delta_hidden * output_ilayer
     total_delta_w_hidden = np.sum(delta_w_hidden, axis=0)
@@ -80,8 +79,8 @@ for iter in range(num_interates):
     print("Hai")
     print(delta_input[0].shape)
 
-    delta_w_input = np.array([learning_rate * delta_input[i]
-                     * data for i in range(num_inodes)])
+    delta_w_input = [learning_rate * delta_input[i]
+                     * data for i in range(num_inodes)]
     print(delta_w_input.shape)
     total_delta_w_input = np.sum(delta_w_input, axis=0)
 
