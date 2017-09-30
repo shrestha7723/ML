@@ -15,9 +15,8 @@ def derivate_output(output):
 
 
 # Create array with n numbers of normalized random weight
-def random_weight(node_inputs):
-    return 2 * np.random.random((node_inputs)) - 1
-
+def random_weight(size):
+    return 2*np.random.random((size,))-1
 
 iris = datasets.load_iris(True)
 data, target = iris
@@ -30,6 +29,7 @@ target = target.reshape((150, 1))
 learning_rate = 0.2
 num_interates = 2
 
+# Let's try 3-1-1 for iris data
 num_inputs = 4
 num_layer = 3
 num_inodes = 3
