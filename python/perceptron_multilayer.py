@@ -18,6 +18,27 @@ def derivate_output(output):
 def random_weight(size):
     return 2*np.random.random((size,))-1
 
+
+training_data = np.array([
+[0,0,0],
+[0,0,1],
+[0,1,0],
+[0,1,1],
+[1,0,0],
+[1,0,1],
+[1,1,0],
+[1,1,1]
+])training_data = np.array([
+[0],
+[0],
+[0],
+[0],
+[0],
+[0],
+[0],
+[1]
+])
+
 iris = datasets.load_iris(True)
 data, target = iris
 target = target.reshape((150, 1))
