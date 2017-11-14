@@ -1,0 +1,35 @@
+1. Single perceptron hanya bisa memetakan fungsi yang datanya dapat dipisahkan secara linear.
+fungsi XOR tidak dapat dipisahkan secara linear. Sehingga sebuah perceptron tidak dapat
+menyelesaikan masalah dari sebuah fungsi XOR.
+
+2. Menggunakan k-fold cross validation, meskipun data yang ada sedikit dan dibagi
+menjadi beberapa bagian. Dilakukan validasi untuk setiap set data yang terbagi sebanyak
+k-bagian dengan satu set yang digunakan sebagai validator dan sisanya sebagai
+training data. Proses tersebut diulangi sehingga semua bagian dari data asli telah
+menjadi validator, dari setiap validator, jumlah iterasi yang dibutuhkan dicatat.
+Proses ini diakhiri dengan backpropagation pada semua data dengan banyak iterasi sesuai
+dengan rata rata dari banyak iterasi proses sebelumnya dan tidak menggunakan validator.
+Sehingga hasil yang dihasilkan valid dan tidak 'wasteful on data'.
+
+3. Algoritma backpropagation untuk neural network yang belum terbentuk:
+  1. Membentuk neural network yang memiliki input, hidden, dan output layer
+    beserta weight random untuk tiap node pada layer.
+  2. Untuk setiap data pada training data, dihitung output dari tiap node.
+  3. Pada output layer, setiap weight disesuaikan nilainya sesuai dengan error yang
+    dihasilkan dan besar pengaruh error terhadap network yang dapat dihitung dengan
+    persamaan: w = w + deltaw = -learning_rate * d(Error)/d(w) = learning_rate * (t - o)
+    * o * (1 - o) * x.
+    Dimana t adalah target output, o adalah output node, dan x adalah input dari training
+    data.
+    Weight pada hidden layer juga disesuaikan sesuai dengan pengaruhnya terhadap network.
+    Karena output dari hidden layer mempengaruhi output dan error dari layer dibawahnya,
+    maka persamaan harus memperhitungkan hal tersebut.
+    Untuk weight pada node yang berada di hidden layer, deltaw = learning_rate
+    * delta * x. Delta dihitung untuk setiap node, dimana delta = o * (1 - o)
+    * sum(k elemen Downstream(), delta * w). Sehingga perhitungan delta w pada
+    hidden layer memperhitungkan semua node yang berada di downtream, yaitu node
+    yang menggunakan output dari hidden node tersebut sebagai input.
+
+4.1. E
+  2. D
+  3. D
